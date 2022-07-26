@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const multer = require('multer');
 const upload = multer({dest: 'public/uploads'});
 const path = require('node:path');
@@ -7,6 +8,7 @@ const port = 3000;
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(cors({optionsSuccessStatus: 200}));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../views/index.html'));
