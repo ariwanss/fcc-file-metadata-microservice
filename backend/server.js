@@ -14,7 +14,9 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../views/index.html'));
 });
 
-app.post('/api/upload', upload.single('upfile'), (req, res) => {
+app.post('/api/fileanalyse', upload.single('upfile'), (req, res) => {
+  console.log(`${req.method} ${req.originalUrl}`);
+  console.log(req.file);
   res.json({
     name: req.file.originalname,
     type: req.file.mimetype,
